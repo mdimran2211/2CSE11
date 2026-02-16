@@ -1,0 +1,47 @@
+-- =========================================
+-- Experiment 1 : SQL Queries on Employee Table
+-- =========================================
+
+-- 1. Create EMPLOYEE_MASTER table with data from EMPLOYEE table
+CREATE TABLE EMPLOYEE_MASTER AS
+SELECT * FROM EMPLOYEE;
+
+-- Display records from EMPLOYEE_MASTER
+SELECT * FROM EMPLOYEE_MASTER;
+
+-- =========================================
+-- 2. Delete all records from EMPLOYEE_MASTER where DeptNo = 10
+-- =========================================
+DELETE FROM EMPLOYEE_MASTER
+WHERE DEPTNO = 10;
+
+-- Check remaining records
+SELECT * FROM EMPLOYEE_MASTER;
+
+-- =========================================
+-- 3. Increase 10% salary for employees of DeptNo 20
+-- (Salary + Commission if present) then add 10%
+-- =========================================
+UPDATE EMPLOYEE_MASTER
+SET SAL = (SAL + IFNULL(COMM,0)) * 1.10
+WHERE DEPTNO = 20;
+
+-- Check updated records
+SELECT * FROM EMPLOYEE_MASTER;
+
+-- =========================================
+-- 4. Alter SAL column to DECIMAL(10,2)
+-- =========================================
+ALTER TABLE EMPLOYEE_MASTER
+MODIFY SAL DECIMAL(10,2);
+
+-- Describe table to verify change
+DESC EMPLOYEE_MASTER;
+
+-- =========================================
+-- 5. Drop EMPLOYEE_MASTER table
+-- =========================================
+DROP TABLE EMPLOYEE_MASTER;
+
+-- Show tables to confirm deletion
+SHOW TABLES;
